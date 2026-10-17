@@ -1,0 +1,159 @@
+:root {
+  --bg: #12151b;
+  --panel: #1b2029;
+  --panel-2: #232a35;
+  --border: #2f3846;
+  --text: #e3e8ef;
+  --muted: #8b96a8;
+  --accent: #e8b84a;
+  --good: #5cc98a;
+  --bad: #ef6b6b;
+  --warn: #e8a34a;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header, main, footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1 {
+  font-size: 1.3rem;
+  margin: 20px 0 14px;
+  color: var(--accent);
+}
+
+footer {
+  color: var(--muted);
+  font-size: 12px;
+  padding-bottom: 24px;
+}
+
+/* Controls */
+input, select, button {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+}
+
+input:focus, select:focus, button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+}
+
+input[type="number"] { text-align: right; }
+
+button { cursor: pointer; white-space: nowrap; }
+button:hover { border-color: var(--muted); }
+button.danger:hover { border-color: var(--bad); color: var(--bad); }
+button.add { color: var(--accent); background: transparent; border-style: dashed; }
+#editor > button.add { margin-bottom: 16px; }
+button.small { padding: 4px 8px; font-size: 13px; }
+button.icon { background: transparent; border-color: transparent; color: var(--muted); padding: 4px 6px; }
+button.icon:hover { color: var(--bad); }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.toolbar select { flex: 1 1 200px; min-width: 0; }
+.btns { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Summary */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.stat span { display: block; color: var(--muted); font-size: 12px; }
+.stat b { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+
+.pos { color: var(--good); }
+.neg { color: var(--bad); }
+
+#warnings { list-style: none; margin: 0 0 12px; padding: 0; }
+#warnings li {
+  color: var(--warn);
+  background: rgba(232, 163, 74, 0.08);
+  border: 1px solid rgba(232, 163, 74, 0.35);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  margin-bottom: 6px;
+}
+
+/* Editor */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.box-settings { display: flex; flex-wrap: wrap; gap: 12px; }
+.box-settings input { font-size: 14px; }
+.box-settings label { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 12px; flex: 1 1 200px; }
+
+.pool-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-bottom: 8px;
+}
+.pool-name { flex: 1 1 160px; min-width: 0; font-weight: 600; }
+.pool-head label { color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.pool-head label input { width: 90px; }
+.pool-ev { color: var(--muted); }
+.pool-ev b { color: var(--text); font-variant-numeric: tabular-nums; }
+
+.table-wrap { overflow-x: auto; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+th.num { text-align: right; }
+td { padding: 3px 6px; border-bottom: 1px solid var(--panel-2); }
+th:first-child { width: 100%; }
+td input { width: 100%; padding: 4px 6px; }
+td input.item-name { min-width: 110px; }
+td input[data-field="value"] { width: 105px; }
+td input[data-field="weight"] { width: 60px; }
+td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+tr.above td input[data-field="value"] { color: var(--good); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.1rem; }
+  .btns { width: 100%; }
+  .btns button { flex: 1; }
+  .card { padding: 10px; }
+  th, td { padding-left: 3px; padding-right: 3px; }
+}

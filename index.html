@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spiral Knights Prize Box Calculator</title>
+  <meta name="description" content="Calculate expected value, profit and ROI of Spiral Knights prize boxes.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Spiral Knights Prize Box Calculator</h1>
+  </header>
+
+  <main>
+    <section class="toolbar">
+      <select id="box-select" aria-label="Saved prize boxes"></select>
+      <div class="btns">
+        <button id="new-box">New</button>
+        <button id="dup-box">Duplicate</button>
+        <button id="del-box" class="danger">Delete</button>
+        <button id="export">Export</button>
+        <button id="import">Import</button>
+        <input type="file" id="import-file" accept=".json,application/json" hidden>
+      </div>
+    </section>
+
+    <section class="summary">
+      <div class="stat"><span>Expected value</span><b id="sum-ev"></b></div>
+      <div class="stat"><span>Profit / loss</span><b id="sum-profit"></b></div>
+      <div class="stat"><span>ROI</span><b id="sum-roi"></b></div>
+      <div class="stat"><span>Chance of item worth &gt; cost</span><b id="sum-above"></b></div>
+      <div class="stat"><span>Pool chances total</span><b id="sum-total"></b></div>
+    </section>
+
+    <ul id="warnings"></ul>
+
+    <section id="editor"></section>
+  </main>
+
+  <footer>All values in Crowns (cr). Your boxes are saved in this browser.</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
